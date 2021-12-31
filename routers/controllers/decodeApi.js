@@ -19,8 +19,9 @@ function test (){
     axios
     .get("https://restcountries.com/v3.1/all")
     .then((res)=>{
-        console.log(res.data[30])
-        console.log(res.data[31])
+        console.log(res.data[30].currencies)
+        console.log(res.data[30].region)
+        console.log(res.data[30].languages)
     })
     
 }

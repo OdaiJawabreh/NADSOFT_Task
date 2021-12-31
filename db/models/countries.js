@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const countrySchema = new mongoose.Schema({
   name: { type: Object },
-  Languages: { type: Object },
-  CCA2: { type: String },
-  CCA3: { type: String },
-  CCN3: { type: String },
-  Currencies: { tupe: String },
-  Region: { type: String },
+  languages: { type: Object },
+  cca2: { type: String },
+  cca3: { type: String },
+  ccn3: { type: String },
+  currencies: { type: Object },
+  region: { type: String },
   latlng: [Number],
 });
 module.exports = mongoose.model("Country", countrySchema);
