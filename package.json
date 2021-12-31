@@ -1,0 +1,29 @@
+{
+  "name": "NADSOFT_Task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OdaiJawabreh/NADSOFT_Task.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OdaiJawabreh/NADSOFT_Task/issues"
+  },
+  "homepage": "https://github.com/OdaiJawabreh/NADSOFT_Task#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.4",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15"
+  }
+}
