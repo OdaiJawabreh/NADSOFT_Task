@@ -5,9 +5,11 @@ const app = express();
 app.use(express.json());
 
 // import Routers
-const countryRouter = require("./routers/routes/insertData");
+const countryRouter = require("./routers/routes/countries");
+
 // Routers
 app.use("/country", countryRouter);
+
 
 
 const port = process.env.PORT

@@ -37,6 +37,7 @@ function insertData(req, res) {
         err: err,
       });
     });
-}
+};
+
 
 module.exports = { insertData };
