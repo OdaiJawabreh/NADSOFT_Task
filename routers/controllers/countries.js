@@ -99,8 +99,33 @@ const getAllCountriesByRegion = async (req, res) => {
     });
 };
 
+const getAllCountriesByLanguage = async (req, res) => {
+  countryModel
+    .aggregate([
+      {
+        $group: { _id: "$languages", Countries: { $push: "$languages.fra" } },
+      },
+    ])
+
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: `All Countries By Region`,
+        countries: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    });
+};
+
 module.exports = {
   getAllCountries,
   getCountryCurrencyByCCA2,
   getAllCountriesByRegion,
+  getAllCountriesByLanguage,
 };
