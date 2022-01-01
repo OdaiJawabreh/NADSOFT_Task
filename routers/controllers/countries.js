@@ -61,7 +61,7 @@ function getCountryCurrencyByCCA2(req, res) {
       if (!result) {
         return res.status(404).json({
           success: false,
-          message: `The country by ${cca2} => not found`,
+          message: `The country by ${cca2} => not found odai`,
         });
       }
       res.status(202).json({
@@ -77,5 +77,30 @@ function getCountryCurrencyByCCA2(req, res) {
       });
     });
 }
+const getAllCountriesByRegion = async (req, res) => {
+  countryModel
+    .aggregate([
+      { $group: { _id: "$region", Countries: { $push: "$name.official" } } },
+    ])
 
-module.exports = { getAllCountries,getCountryCurrencyByCCA2 };
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: `All Countries By Region`,
+        countries: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    });
+};
+
+module.exports = {
+  getAllCountries,
+  getCountryCurrencyByCCA2,
+  getAllCountriesByRegion,
+};

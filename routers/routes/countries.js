@@ -1,7 +1,7 @@
 const express = require("express");
 
 const { insertData } = require("../controllers/insertData");
-const {getAllCountries , getCountryCurrencyByCCA2} = require("../controllers/countries")
+const {getAllCountries , getCountryCurrencyByCCA2 , getAllCountriesByRegion} = require("../controllers/countries")
 
 const countryRouter = express.Router();
 
@@ -11,8 +11,10 @@ countryRouter.post("/",  insertData);
 //GET http://localhost:5000/country?query="search word"
 countryRouter.get("/",  getAllCountries);
 
-//GET http://localhost:5000/:cca2
-countryRouter.get("/:cca2",  getCountryCurrencyByCCA2);
+//GET http://localhost:5000/country/currency/:cca2
+countryRouter.get("/currency/:cca2",  getCountryCurrencyByCCA2);
+
+countryRouter.get("/region", getAllCountriesByRegion);
 
 
 module.exports = countryRouter;
