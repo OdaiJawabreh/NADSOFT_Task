@@ -24,8 +24,10 @@ countryRouter.get("/currency/:cca2", getCountryCurrencyByCCA2);
 //GET http://localhost:5000/country/region
 countryRouter.get("/region", getAllCountriesByRegion);
 
-//GET http://localhost:5000/country/language
-countryRouter.get("/language", getAllCountriesByLanguage);
+//if you to show any group by language just writ first 3 letters in name of language insted of shortcut
+// for example if you want countries that speak english write following api 
+//GET http://localhost:5000/country/language/:eng
+countryRouter.get("/language/:shortcut", getAllCountriesByLanguage);
 
 //GET http://localhost:5000/country/file
 countryRouter.post("/file", saveFile);

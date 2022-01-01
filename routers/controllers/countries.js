@@ -77,7 +77,7 @@ function getCountryCurrencyByCCA2(req, res) {
       });
     });
 }
-const getAllCountriesByRegion = async (req, res) => {
+function getAllCountriesByRegion(req, res) {
   countryModel
     .aggregate([
       { $group: { _id: "$region", Countries: { $push: "$name.official" } } },
@@ -97,20 +97,25 @@ const getAllCountriesByRegion = async (req, res) => {
         err: err,
       });
     });
-};
+}
 
 const getAllCountriesByLanguage = async (req, res) => {
+  let language = req.params.shortcut.toLowerCase();
   countryModel
+    // .distinct("languages")
     .aggregate([
       {
-        $group: { _id: "$languages", Countries: { $push: "$languages.fra" } },
+        $group: {
+          _id: `$languages.${language}`,
+          Countries: { $push: "$name.common" },
+        },
       },
     ])
 
     .then((result) => {
       res.status(200).json({
         success: true,
-        message: `All Countries By Region`,
+        message: `All Countries By Language`,
         countries: result,
       });
     })
