@@ -1,7 +1,7 @@
 const express = require("express");
 
 const insertData = require("../controllers/insertData");
-const saveFile = require ("../controllers/saveInJson")
+const {saveFile , downloadFile} = require ("../controllers/saveInJson")
 
 const {
   getAllCountries,
@@ -29,7 +29,10 @@ countryRouter.get("/region", getAllCountriesByRegion);
 //GET http://localhost:5000/country/language/:eng
 countryRouter.get("/language/:shortcut", getAllCountriesByLanguage);
 
-//GET http://localhost:5000/country/file
+//POST http://localhost:5000/country/file
 countryRouter.post("/file", saveFile);
+
+//POST http://localhost:5000/country/download
+countryRouter.get("/download", downloadFile);
 
 module.exports = countryRouter;
