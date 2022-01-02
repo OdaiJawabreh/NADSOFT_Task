@@ -4,7 +4,7 @@
  1. Microsoft Visual Studio Code
  2. NodeJS
  3. Express
- 4. MongoDB (Online PHP MY Admin)
+ 4. MongoDB 
  5. mongoose
 
 
